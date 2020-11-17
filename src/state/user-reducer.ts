@@ -30,7 +30,7 @@ export const userReducer = (state: StateType, action: ActionType):StateType => {
         newState.childrenCount = state.childrenCount + 1
         return newState */
         default:
-            throw new Error("I don't understand this action type ")
+            return state
 
     }
 }
