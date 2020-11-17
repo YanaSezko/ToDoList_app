@@ -14,7 +14,6 @@ test('user reducer shold increment only childrenCount', ()=>{
     expect(endState.age).toBe(20)
     expect(endState.childrenCount).toBe(3)
 })
-
 test('user reducer shold change name of user', ()=>{
     const startState={age:20, childrenCount:2, name:"Yana"}
     const newName="Zlata"

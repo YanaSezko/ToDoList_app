@@ -2,38 +2,39 @@ import { v1 } from "uuid"
 import { FilterValuesType, TodolistType } from "../App"
 
 export type RemoveTodolistActionType = {
-    type: 'REMOVE-TODOLIST',
+    type: 'REMOVE-TODOLIST'
     id: string
 }
 export type AddTodolistActionType = {
-    type: 'ADD-TITLE',
+    type: 'ADD-TODOLIST'
     title: string
+    todolistId:string
 }
 export type ChangeTodolistTitleActionType = {
-    type: 'CHANGE-TODOLIST-TITLE',
-    id: string,
+    type: 'CHANGE-TODOLIST-TITLE'
+    id: string
     title: string
 }
 export type ChangeTodolistFilterActionType = {
-    type: 'CHANGE-TODOLIST-FILTER',
-    id: string,
+    type: 'CHANGE-TODOLIST-FILTER'
+    id: string
     filter: FilterValuesType
 }
 
 type ActionsType = RemoveTodolistActionType | AddTodolistActionType | ChangeTodolistTitleActionType | ChangeTodolistFilterActionType
 
-export const RemoveTodolistAC = (todolistId: string): RemoveTodolistActionType => {
+export const removeTodolistAC = (todolistId: string): RemoveTodolistActionType => {
     return { type: 'REMOVE-TODOLIST', id: todolistId }
 }
-export const AddTodolistAC = (title: string): AddTodolistActionType => {
-    return { type: 'ADD-TITLE', title: title}
+export const addTodolistAC = (title: string): AddTodolistActionType => {
+    return { type: 'ADD-TODOLIST', title, todolistId:v1()}
 }
-export const ChangeTodolistTitleAC = (id:string,
+export const changeTodolistTitleAC = (id:string,
     title:string): ChangeTodolistTitleActionType => {
     return { type: 'CHANGE-TODOLIST-TITLE', id:id,
     title:title}
 }
-export const ChangeTodolistFilterAC = (id:string,
+export const changeTodolistFilterAC = (id:string,
     filter:FilterValuesType): ChangeTodolistFilterActionType => {
     return { type: 'CHANGE-TODOLIST-FILTER', id:id, filter:filter}
 }
@@ -42,9 +43,9 @@ export const todolistsReducer = (state: Array<TodolistType>, action: ActionsType
         case 'REMOVE-TODOLIST': {
             return state.filter(tl => tl.id != action.id)
         }
-        case 'ADD-TITLE': {
+        case 'ADD-TODOLIST': {
             return [...state, {
-                id: v1(),
+                id: action.todolistId,
                 title: action.title,
                 filter: 'all'
             }]
