@@ -1,7 +1,6 @@
-import React, { useReducer} from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import { Todolist } from "./Todolist";
-import { v1 } from "uuid";
 import { AddItemForm } from "./AddItemForm";
 import { Button, Toolbar, Typography, IconButton, AppBar, Container, Grid, Paper } from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
@@ -29,8 +28,8 @@ export type TasksStateType = {
 }
 function AppWithRedux() {
     const dispatch = useDispatch()
-    const todolists = useSelector<AppRootStateType, Array<TodolistType>>( state => state.todolists)
-    const tasks = useSelector<AppRootStateType, TasksStateType>( state => state.tasks)
+    const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
+    const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
     function removeTask(id: string, todolistId: string) {
         const action = removeTaskAC(id, todolistId)
@@ -48,8 +47,6 @@ function AppWithRedux() {
         const action = changeTaskTitleAC(taskId, newTitle, todolistId)
         dispatch(action)
     }
-
-
     function changeFilter(value: FilterValuesType, todolistId: string) {
         const action = changeTodolistFilterAC(value, todolistId)
         dispatch(action)
@@ -58,18 +55,17 @@ function AppWithRedux() {
         const action = changeTodolistTitleAC(id, newTitle)
         dispatch(action)
     }
-
     function removeTodoList(todoListId: string) {
         const action = removeTodolistAC(todoListId)
         dispatch(action)
     }
-function addTodoList(title: string) {
+    function addTodoList(title: string) {
         const action = addTodolistAC(title)
         dispatch(action)
     }
-    
 
- return(
+
+    return (
         <div className="App">
             <AppBar position="static">
                 <Toolbar>

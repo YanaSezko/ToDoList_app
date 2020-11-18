@@ -38,13 +38,7 @@ export const changeTodolistFilterAC = (filter:FilterValuesType, id:string): Chan
     return { type: 'CHANGE-TODOLIST-FILTER', filter, id}
 }
 
-export let todoListId1 = v1()
-export let todoListId2 = v1()
-
-const initialState: Array<TodolistType> = [
-    { id: todoListId1, title: "What to learn", filter: "all" },
-    { id: todoListId2, title: "What to buy", filter: "all" }
-]
+const initialState: Array<TodolistType> = []
 
 export const todolistsReducer = (state: Array<TodolistType> = initialState, action: ActionsType): Array<TodolistType> =>{
     switch (action.type) {
