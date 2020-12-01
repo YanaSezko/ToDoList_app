@@ -65,7 +65,6 @@ export const Todolist = React.memo((props: PropsType) => {
                         todolistId={props.id} 
                     />)
                 }
-
             </div>
             <div style={{ margin: "10x" }}>
                 <Button variant={props.filter === "all" ? "contained" : "text"}
