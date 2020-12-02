@@ -82,15 +82,18 @@ function AppWithRedux() {
                     <AddItemForm addItem={addTodoList} />
                 </Grid>
                 <Grid container spacing={3}>
+
                     {
-                        todolists.map((tl) => {
-                            let tasksForTodoList = tasks[tl.id];
+                        todolists.map(tl => {
+                            let allTodolistTasks = tasks[tl.id];
+                       
+                            
                             return <Grid item key={tl.id}>
                                 <Paper style={{ padding: "10px" }}>
                                     <Todolist
                                         id={tl.id}
                                         title={tl.title}
-                                        tasks={tasksForTodoList}
+                                        tasks={allTodolistTasks}
                                         removeTask={removeTask}
                                         changeFilter={changeFilter}
                                         addTask={addTask}

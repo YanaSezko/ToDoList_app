@@ -18,6 +18,5 @@ test('user reducer shold change name of user', ()=>{
     const startState={age:20, childrenCount:2, name:"Yana"}
     const newName="Zlata"
     const endState=userReducer(startState,{type:"CHANGE-NAME", newName:newName})
-
     expect(endState.name).toBe(newName)
 })
